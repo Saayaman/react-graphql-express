@@ -6,14 +6,14 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Apollo things
-import { ApolloProvider } from 'react-apollo';
-import client from './apollo';
+// import { ApolloProvider } from 'react-apollo';
+// import client from './apollo';
 
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  // <ApolloProvider client={client}>
+    <App />,
+  // </ApolloProvider>,
   document.getElementById('root')
 );
 

@@ -1,46 +1,47 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
 import { Table } from 'reactstrap';
 
-export const GET_POSTS = gql`
-  query GetPosts {
-    posts {
-      id
-      author
-      body
-    }
-  }
-`;
+// import gql from 'graphql-tag';
+// import { Query } from 'react-apollo';
+
+// export const GET_POSTS = gql`
+//   query GetPosts {
+//     posts {
+//       id
+//       author
+//       body
+//     }
+//   }
+// `;
 
 
-const rowStyles = (post, canEdit) => canEdit(post) ? { cursor: 'pointer', fontWeigh: 'bold' } : {};
-
-const PostViewer = ({ canEdit, onEdit }) => (
-  <Query query={GET_POSTS}>
-    {({ loading, data }) => !loading && (
+const PostViewer = ({ canEdit, onEdit, posts }) => (
+  // <Query query={GET_POSTS}>
+  //   {({ loading, data }) => !loading && (
       <Table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>Author</th>
             <th>Body</th>
           </tr>
         </thead>
         <tbody>
-          {data.posts.map(post => (
+          {posts.map(post => (
             <tr
               key={post.id}
-              style={rowStyles(post, canEdit)}
+              style={canEdit(post) ? { cursor: 'pointer', fontWeigh: 'bold' } : {}}
               onClick={() => canEdit(post) && onEdit(post)}
             >
+              <td>{post.id}</td>
               <td>{post.author}</td>
               <td>{post.body}</td>
             </tr>
           ))}
         </tbody>
       </Table>
-    )}
-  </Query>
+  //   )}
+  // </Query>
 );
 
 PostViewer.defaultProps = {
