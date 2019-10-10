@@ -11,34 +11,12 @@ import {
 } from 'reactstrap';
 import { Form as FinalForm, Field } from 'react-final-form';
 
-import client from './apollo';
-// import { GET_POSTS } from './PostViewer';
-import gql from 'graphql-tag';
-
-
-const SUBMIT_POST = gql`
-  mutation SubmitPost($input: PostInput!) {
-    submitPost(input: $input) {
-      id
-    }
-  }
-`;
 
 const PostEditor = ({ post, onClose, submitPosts, id }) => (
   <FinalForm
     onSubmit={({ author, body }) => {
       const input = { id, author, body };
-
-      console.log('input!', input);
-
       submitPosts(input);
-
-      // await client.mutate({
-      //   variables: { input },
-      //   mutation: SUBMIT_POST,
-      //   refetchQueries: () => [{ query: GET_POSTS }],
-
-      // });
 
       onClose();
     }}

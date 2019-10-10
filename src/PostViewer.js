@@ -1,23 +1,7 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 
-// import gql from 'graphql-tag';
-// import { Query } from 'react-apollo';
-
-// export const GET_POSTS = gql`
-//   query GetPosts {
-//     posts {
-//       id
-//       author
-//       body
-//     }
-//   }
-// `;
-
-
 const PostViewer = ({ canEdit, onEdit, posts }) => (
-  // <Query query={GET_POSTS}>
-  //   {({ loading, data }) => !loading && (
       <Table>
         <thead>
           <tr>
@@ -40,8 +24,6 @@ const PostViewer = ({ canEdit, onEdit, posts }) => (
           ))}
         </tbody>
       </Table>
-  //   )}
-  // </Query>
 );
 
 PostViewer.defaultProps = {
